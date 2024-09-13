@@ -1,37 +1,47 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import Link from 'next/link';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import Link from "next/link";
+import axios from "axios";
 
 export default function SignUpForm() {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: ""
-  })
+    password: "",
+  });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prevData => ({
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    // Here you would typically send the form data to your server
-    console.log(formData)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const response = await axios.post("/api/login", { formData });
+    
+    if (response.status == 200) {
+      console.log("data being send to the server",response);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Card className="w-[350px]">
@@ -84,11 +94,11 @@ export default function SignUpForm() {
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
           Already have an account?{" "}
-          <Link href='/login' className="text-primary hover:underline">
+          <Link href="/login" className="text-primary hover:underline">
             Login
           </Link>
         </p>
       </CardFooter>
     </Card>
-  )
+  );
 }
