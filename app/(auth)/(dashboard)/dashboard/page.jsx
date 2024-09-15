@@ -11,8 +11,8 @@ const Dashboard = () => {
         <BookOpenCheck />
         <Navbar />
         <div className="flex gap-2">
-          <Button variant="ghost">Signup</Button>
-          <Button variant="ghost">Login</Button>
+          <Button variant="ghost" className='hover:bg-blue-500  hover:text-white'>Signup</Button>
+          <Button variant="ghost" className='hover text-'>Login</Button>
         </div>
       </div>
     </div>
