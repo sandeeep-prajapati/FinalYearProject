@@ -10,17 +10,23 @@ import WalletCard from "@/components/WalletCard";
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black p-4">
-      <div className="w-full backdrop-blur-sm bg-zinc-800/70 rounded-xl border border-zinc-700/50 shadow-xl">
-        <div className="flex items-center justify-between px-6">
+      <div className="w-full backdrop-blur-sm bg-zinc-800/70 rounded-xl border border-zinc-700/50 shadow-xl ">
+        <div className="w-full flex items-center px-6">
+          
+          {/* Left Section */}
           <div className="flex items-center gap-2">
             <BookOpenCheck className="h-6 w-6 text-indigo-400" />
             <span className="text-lg font-semibold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
               EduPortal
             </span>
           </div>
+          
+          {/* Center Section (Navbar) */}
+          <div className="flex-grow flex justify-center">
+            <Navbar />
+          </div>
 
-          <Navbar />
-
+          {/* Right Section */}
           <div className="flex items-center gap-4">
             <WalletCard />
             <div className="w-px h-6 bg-zinc-700/50" />
