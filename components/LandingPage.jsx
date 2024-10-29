@@ -31,7 +31,7 @@ const LandingPage = () => {
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold text-blue-400">ChainLogic</div>
           <Link
-            href="/api/auth/login"
+            href="/dashboard"
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
           >
             Get Started
