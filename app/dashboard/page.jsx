@@ -6,40 +6,44 @@ import { BookOpenCheck } from "lucide-react";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import WalletCard from "@/components/WalletCard";
+import FileUpload from "@/components/Uploader";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black p-4">
-      <div className="w-full backdrop-blur-sm bg-zinc-800/70 rounded-xl border border-zinc-700/50 shadow-xl ">
-        <div className="w-full flex items-center px-6">
+    <div className="min-h-screen bg-black p-4">
+      <div className="w-full backdrop-blur-sm bg-zinc-900/70 rounded-xl border border-zinc-800/50 shadow-xl">
+        <div className="w-full h-16 flex items-center px-6">
           
-          {/* Left Section */}
-          <div className="flex items-center gap-2">
-            <BookOpenCheck className="h-6 w-6 text-indigo-400" />
-            <span className="text-lg font-semibold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
+          {/* Left Section - Fixed width */}
+          <div className="w-48 flex items-center gap-2">
+            <BookOpenCheck className="h-6 w-6 text-white" />
+            <span className="text-lg font-semibold text-white">
               EduPortal
             </span>
           </div>
           
-          {/* Center Section (Navbar) */}
-          <div className="flex-grow flex justify-center">
-            <Navbar />
+          {/* Center Section (Navbar) - Exact center */}
+          <div className="flex-1 flex justify-center items-center">
+            <div className="absolute left-1/2 -translate-x-1/2">
+              <Navbar />
+            </div>
           </div>
 
-          {/* Right Section */}
-          <div className="flex items-center gap-4">
+          {/* Right Section - Fixed width */}
+          <div className="w-48 flex items-center gap-4 justify-end">
             <WalletCard />
-            <div className="w-px h-6 bg-zinc-700/50" />
+            <div className="w-px h-6 bg-zinc-800/50" />
             <UserButton />
           </div>
         </div>
       </div>
 
-      <div className="mt-6 p-6 backdrop-blur-sm bg-zinc-800/30 rounded-xl border border-zinc-700/50">
-        <h1 className="text-2xl font-semibold text-gray-100 mb-4">
+      <div className="mt-6 p-6 backdrop-blur-sm bg-zinc-900/30 rounded-xl border border-zinc-800/50">
+        <h1 className="text-2xl font-semibold text-white mb-4">
           Welcome to Dashboard
         </h1>
       </div>
+      <FileUpload/>
     </div>
   );
 };
