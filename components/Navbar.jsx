@@ -13,7 +13,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="px-4 py-2 bg-gray-50 rounded-2xl border border-gray-200">
+    <nav className="px-4 py-1 bg-gray-300 rounded-2xl border border-gray-200">
       <div className="flex items-center justify-center gap-2">
         {navItems.map((item) => (
           <Link
