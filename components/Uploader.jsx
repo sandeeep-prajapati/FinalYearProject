@@ -1,20 +1,7 @@
 import React, { useState } from 'react';
 import { Upload, Search, Filter, ChevronLeft, Share, UserPlus, Plus, File, Settings,Folder,Users,Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-// const Sidebar = ({ recentFiles }) => (
-//   <div className="bg-zinc-900 p-4 w-64 rounded-2xl shadow-lg flex-shrink-0">
-//     <h2 className="text-white text-xl font-bold mb-4">Recent Files</h2>
-//     <ul className="space-y-4">
-//       {recentFiles.map((file) => (
-//         <li key={file.id} className="flex items-center justify-between text-gray-400">
-//           <span>{file.name}</span>
-//           <span className="text-xs text-gray-500">{file.size} MB</span>
-//         </li>
-//       ))}
-//     </ul>
-//   </div>
-// );
+import {MonitorUp} from 'lucide-react'
 
 
 const Sidebar = ({ recentFiles }) => {
@@ -101,7 +88,7 @@ const FileUpload = () => {
 
   const handleFileUpload = (event) => {
     const newFiles = Array.from(event.target.files).map(file => ({
-      id: Math.random().toString(36).substr(2, 9),
+      id: Math.random().toString(36),
       name: file.name,
       size: (file.size / (1024 * 1024)).toFixed(2),
       lastModified: new Date(file.lastModified).toLocaleDateString(),
@@ -110,9 +97,10 @@ const FileUpload = () => {
     }));
     setFiles([...files, ...newFiles]);
   };
+  console.log('all my files',files)
 
   return (
-    <div className="flex gap-6 ">
+    <div className="flex gap-3 ">
       {/* Sidebar Component */}
       <Sidebar recentFiles={files.slice(-5)} />
 
@@ -135,6 +123,10 @@ const FileUpload = () => {
             <Button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white">
               <UserPlus className="w-4 h-4" />
               Add Collaborator
+            </Button>
+            <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white">
+              <MonitorUp className="w-4 h-4 " />
+              Deploy to Contract
             </Button>
           </div>
         </div>
