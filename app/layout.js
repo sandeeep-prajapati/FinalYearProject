@@ -3,6 +3,9 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
 
+import ConditionalNavbar from "@/components/ConditionalNavbar";
+
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -20,15 +23,20 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <ClerkProvider>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        {children}
-      </body>
-        </ClerkProvider>
+          <div className="min-h-screen bg-black p-4 flex flex-col gap-3">
+            <ConditionalNavbar />
+
+            {children}
+          </div>
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
